@@ -1,0 +1,36 @@
+version: "3.0"
+
+services:
+  redis:
+    image: 'redis:latest'
+    container_name: redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
+    volumes:
+      - DISABLE_COMMANDS=CONFIG
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    command: --lower_case_table_names=1
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_DATABASE=notification
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-proot",  "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
