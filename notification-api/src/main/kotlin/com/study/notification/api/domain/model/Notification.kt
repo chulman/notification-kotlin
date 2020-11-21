@@ -1,6 +1,7 @@
 package com.study.notification.api.domain.model
 
 import org.hibernate.annotations.DynamicUpdate
+import javax.persistence.Column
 import javax.persistence.Entity
 
 /**
@@ -23,12 +24,13 @@ import javax.persistence.Entity
 //* 인스턴스 변수는 반드시 entity 자기 자신에 의해서만 접근해야 한다.<p>
 @Entity
 //@AttributeOverride(name = "id", column = Column(name = "notificationId"))
-class Notification(val message: String) : AuditingEntity() {
-
+class Notification(
+    @Column(name = "message")
+    val message: String
+) : AuditingEntity() {
     override fun toString(): String {
         return "Notification(" +
                 "id=$id, " +
-                "message=$message" +
-                ")"
+                "message=$message)"
     }
 }
