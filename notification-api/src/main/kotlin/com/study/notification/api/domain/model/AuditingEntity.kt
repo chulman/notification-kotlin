@@ -18,9 +18,9 @@ abstract class AuditingEntity {
 
     /** 생성일시  */
     @CreatedDate
-    lateinit var createdAt: LocalDateTime
+    var createdAt: LocalDateTime = LocalDateTime.now()
 
     /** 수정일시  */
     @LastModifiedDate
-    lateinit var updatedAt: LocalDateTime
+    var updatedAt: LocalDateTime = LocalDateTime.now()
 }
