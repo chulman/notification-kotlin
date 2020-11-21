@@ -1,0 +1,3 @@
+### test http
+GET http://localhost:8080/healthy
+Content-Type: application/json
