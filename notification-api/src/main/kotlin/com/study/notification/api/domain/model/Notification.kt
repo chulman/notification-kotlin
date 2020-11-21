@@ -26,7 +26,7 @@ import javax.persistence.Entity
 //@AttributeOverride(name = "id", column = Column(name = "notificationId"))
 class Notification(
     @Column(name = "message")
-    val message: String
+    var message: String
 ) : AuditingEntity() {
     override fun toString(): String {
         return "Notification(" +
