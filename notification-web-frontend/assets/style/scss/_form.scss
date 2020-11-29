@@ -1,0 +1,19 @@
+input,
+textarea,
+select,
+button {
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  appearance: none;
+  background-color: transparent;
+
+  &:focus {
+    outline: 1px solid goldenrod;
+  }
+}
+
+button {
+  background-color: transparent;
+}

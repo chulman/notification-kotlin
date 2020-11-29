@@ -1,0 +1,24 @@
+{
+  "topics" : [
+    {
+      "topic" : "news",
+      "active" : "Y",
+      "createdAt" : "2020-11-20T11:01:23"
+    },
+    {
+      "topic" : "notice",
+      "active" : "N",
+      "createdAt" : "2020-11-20T11:01:24"
+    },
+    {
+      "topic" : "test",
+      "active" : "N",
+      "createdAt" : "2020-11-20T11:01:25"
+    },
+    {
+      "topic" : "alert",
+      "active" : "N",
+      "createdAt" : "2020-11-20T11:01:25"
+    }
+  ]
+}

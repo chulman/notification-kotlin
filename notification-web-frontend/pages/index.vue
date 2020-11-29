@@ -1,73 +1,134 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        notification-web-frontend
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="temp-container">
+    <h1>Testing For Notification</h1>
+    <p>
+      <em>you can do topic registration and message delivery tests.</em>
+    </p>
+    <h2>TOPIC</h2>
+    <div class="section">
+      <!-- TODO table   -->
+      <h4> search for topic </h4>
+      <Topic/>
+    </div>
+    <h2>Message</h2>
+    <div class="section">
+      <div class="section__row">
+        <input id="message" v-model="message" type="text"
+               placeholder="input test message...">
+        <div class="inline-button-container">
+          <button>Send</button>
+          <button @click="clearInput($event, 'message')">Clear</button>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      message: ''
+    };
+  },
+  computed: {},
+  mounted() {
+  },
+  methods: {
+    clearInput(event, model) {
+      event.preventDefault();
+      this[model] = '';
+    }
+  }
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style lang="scss" scoped>
+.temp-container {
+  padding: 16px;
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+h1 {
+  margin-bottom: 1em;
+  font-size: 1.36em;
+  font-weight: bold;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+h2 {
+  margin-top: 2em;
+  font-size: 1.12em;
+  font-weight: bold;
 }
 
-.links {
-  padding-top: 15px;
+.section {
+  margin-top: 16px;
+  min-width: 260px;
+  max-width: 800px;
+
+  &__row {
+    display: flex;
+    margin-top: 8px;
+
+    .order-link {
+      margin-left: 16px;
+    }
+
+    &--margin {
+      margin-top: 12px;
+    }
+
+    label {
+      width: 72px;
+    }
+
+    span {
+      margin-bottom: 5px;
+    }
+
+    input {
+      flex: 1;
+      height: 28px;
+      background: #fff;
+      border: 1px solid #999;
+      border-radius: 3px;
+
+      &[type="submit"] {
+        width: 100%;
+        border: 1px solid #999;
+        background: #ddd;
+      }
+    }
+
+    .inline-button, .inline-button-container {
+      flex: 0;
+      margin-left: 4px;
+      display: flex;
+    }
+
+    .inline-button-container button {
+      width: 100%;
+      margin-left: 8px;
+    }
+
+    button {
+      flex: 1;
+      padding: 0 8px;
+      border: 1px solid #999;
+      border-radius: 3px;
+      min-height: 28px;
+      background: #ddd;
+
+      &:active {
+        background: #999;
+      }
+    }
+  }
+}
+
+.long-text {
+  word-break: break-all;
+}
+
+a {
+  color: #0074D9;
 }
 </style>
