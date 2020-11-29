@@ -1,6 +1,7 @@
 package com.study.notification.api.domain.repository
 
 import com.study.notification.api.domain.model.Notification
+import com.study.notification.api.domain.model.Topic
 import org.springframework.data.jpa.repository.JpaRepository
 
 /**
@@ -10,3 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository
  */
 
 interface NotificationRepository: JpaRepository<Notification, Long>
+
+interface TopicRepository: JpaRepository<Topic, Long>
