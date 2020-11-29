@@ -41,4 +41,6 @@
     + 실패 : 4xx(BAD_REQUEST- 토픽 존재x), 5xx(INTERNAL_SERVER_ERROR)
 
 #### firebase api
-TODO 
+
+- [X] : 메시지 전송 구현
+- [ ] : deprecated 된 api 변경
