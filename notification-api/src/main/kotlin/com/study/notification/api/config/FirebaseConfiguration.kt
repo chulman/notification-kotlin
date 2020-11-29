@@ -18,8 +18,7 @@ class FirebaseConfiguration {
      */
     @Bean
     fun googleCredential(): GoogleCredential {
-
-        // TODO  change file name
+        // TODO change file name - 파일 위치는 resource 하위에 두고 설정합니다.
         val fileInputStream = FileInputStream("adminFile")
 
         return GoogleCredential.fromStream(fileInputStream)
