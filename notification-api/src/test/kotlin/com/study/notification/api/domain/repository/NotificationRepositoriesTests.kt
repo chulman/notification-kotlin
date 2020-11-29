@@ -14,7 +14,8 @@ import javax.transaction.Transactional
  */
 @DataJpaTest(showSql = true)
 class NotificationRepositoriesTests @Autowired constructor(
-    val notificationRepository: NotificationRepository
+    val notificationRepository: NotificationRepository,
+    val topicRepository: TopicRepository
 ) {
 
     @PersistenceContext
@@ -22,7 +23,7 @@ class NotificationRepositoriesTests @Autowired constructor(
 
     @Test
     @Transactional
-    internal fun `find by id test`() {
+    internal fun `find by id test for notification repository`() {
         // given
         val message = "test message"
         val notification = Notification(message)
@@ -38,4 +39,12 @@ class NotificationRepositoriesTests @Autowired constructor(
         assertThat(find.get().id).isEqualTo(1)
         assertThat(find.get().message).isEqualTo(message)
     }
+
+
+    @Test
+    @Transactional
+    internal fun `fin by id test for topic repository`() {
+
+    }
+
 }
