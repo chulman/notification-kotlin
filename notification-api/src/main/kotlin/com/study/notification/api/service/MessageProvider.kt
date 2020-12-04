@@ -17,15 +17,12 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 class MessageProvider(
-    val notificationRepository: NotificationRepository,
-    val googleCredential: GoogleCredential
+    val notificationRepository: NotificationRepository
 ) {
 
     private val log by LoggerDelegate()
 
     fun send(topic: String, message: String): SendResponse {
-        val token = getAccessToken()
-        log.info("access token = $token")
 
         val message: Message = buildMessage(message, topic)
 
@@ -51,11 +48,5 @@ class MessageProvider(
         return Message.builder()
             .setTopic(topic)
             .setNotification(notification).build()
-    }
-
-    private fun getAccessToken(): String? {
-        val refresh = googleCredential.refreshToken()
-        log.info("token refresh = $refresh")
-        return googleCredential.accessToken
     }
 }
