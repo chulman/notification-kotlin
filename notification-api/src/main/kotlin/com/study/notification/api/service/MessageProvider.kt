@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional
 
 /**
  * @author ray
- * @deprecated GoogleCredential : modify to Credentials
  */
 @Service
 @Transactional
@@ -24,7 +23,7 @@ class MessageProvider(
     private val log by LoggerDelegate()
 
     fun send(topic: Topic, message: String): SendResponse {
-        val firebaseMessage: Message = buildMessage(message, topic.topic)
+        val firebaseMessage = buildMessage(message, topic.topic)
         log.info("request message = $firebaseMessage")
 
         val messageId = FirebaseMessaging.getInstance()
@@ -36,7 +35,7 @@ class MessageProvider(
                 topic
             )
         )
-        return SendResponse(HttpStatus.OK, messageId)
+        return SendResponse(HttpStatus.OK, "success", messageId)
     }
 
     private fun buildMessage(
