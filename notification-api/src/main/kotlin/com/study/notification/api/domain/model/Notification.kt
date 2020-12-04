@@ -28,7 +28,7 @@ class Notification(
     var message: String,
 
     @JoinColumn(name = "topicId")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @ManyToOne(fetch = FetchType.LAZY)
     var topic: Topic
 
 ) : AuditingEntity() {

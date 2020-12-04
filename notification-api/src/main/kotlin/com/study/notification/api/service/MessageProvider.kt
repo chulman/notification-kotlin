@@ -24,10 +24,11 @@ class MessageProvider(
 
     fun send(topic: Topic, message: String): SendResponse {
         val firebaseMessage = buildMessage(message, topic.topic)
-        log.info("request message = $firebaseMessage")
 
         val messageId = FirebaseMessaging.getInstance()
             .send(firebaseMessage)
+
+        log.info("response from firebase = $messageId")
 
         notificationRepository.save(
             com.study.notification.api.domain.model.Notification(
