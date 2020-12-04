@@ -12,7 +12,6 @@ import org.springframework.core.io.ClassPathResource
 class FirebaseConfiguration {
     // TODO set real file
     val fileName =  "service-account.json"
-    val uri = "https://www.googleapis.com/auth/firebase.messaging"
 
     /**
      * @deprecated
