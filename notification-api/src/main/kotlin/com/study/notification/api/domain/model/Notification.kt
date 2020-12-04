@@ -1,8 +1,7 @@
 package com.study.notification.api.domain.model
 
 import org.hibernate.annotations.DynamicUpdate
-import javax.persistence.Column
-import javax.persistence.Entity
+import javax.persistence.*
 
 /**
  * @author ray
@@ -26,7 +25,12 @@ import javax.persistence.Entity
 //@AttributeOverride(name = "id", column = Column(name = "notificationId"))
 class Notification(
     @Column(name = "message")
-    var message: String
+    var message: String,
+
+    @JoinColumn(name = "topicId")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    var topic: Topic
+
 ) : AuditingEntity() {
     override fun toString(): String {
         return "Notification(" +
