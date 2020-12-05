@@ -18,6 +18,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("com.google.firebase:firebase-admin:6.16.0")
+    testImplementation("io.mockk:mockk:1.9.3")
 
     runtimeOnly("com.h2database:h2")
 }
