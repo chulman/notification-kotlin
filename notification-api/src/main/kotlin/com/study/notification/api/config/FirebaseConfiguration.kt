@@ -10,12 +10,9 @@ import org.springframework.core.io.ClassPathResource
 
 @Configuration
 class FirebaseConfiguration {
-    // TODO set real file
+
     val fileName =  "service-account.json"
 
-    /**
-     * @deprecated
-     */
     @Bean
     fun firebaseInitialize() {
         val fileInputStream =

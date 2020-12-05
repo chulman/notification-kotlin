@@ -18,7 +18,7 @@ class TopicService(
     fun find(topicName: String): Topic? {
         val topic = topicRepository.findByTopic(topicName)
         log.info("find topic = $topic name = $topicName")
-        return topicRepository.findByTopic(topicName)
+        return topic
     }
 
     fun isActive(topicStatus: TopicStatus): Boolean {

@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.http.HttpStatus
 
 /**
- * https://mockk.io/
+ * c
  */
 @ExtendWith(MockKExtension::class)
 class MessageProviderTest {
