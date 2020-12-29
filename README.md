@@ -14,7 +14,6 @@
 - 프론트엔드 코드는 nuxt.js 및 vue framework 기반으로 작성합니다.
 
 ### TODO
-- [X] <strike>모바일 프로젝트는 따로 구현하는게 좋을까? (고민)</strike>
 - [X] push 된 알림을 db에 저장
 - [ ] topic update 
 - [ ] notification web project complete
