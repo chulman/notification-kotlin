@@ -16,4 +16,5 @@
 ### TODO
 - [X] <strike>모바일 프로젝트는 따로 구현하는게 좋을까? (고민)</strike>
 - [X] push 된 알림을 db에 저장
-- [ ] 배포도 해볼까?
+- [ ] topic update 
+- [ ] notification web project complete
