@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class TopicService(
     private val topicRepository: TopicRepository
-){
+) {
     private val log by LoggerDelegate()
 
     @Transactional(readOnly = true)
@@ -21,7 +21,13 @@ class TopicService(
         return topic
     }
 
-    fun isActive(topicStatus: TopicStatus): Boolean {
-        return TopicStatus.ACTIVE == topicStatus
-    }
+    fun isActive(topicStatus: TopicStatus): Boolean =
+        TopicStatus.ACTIVE == topicStatus
+
+    fun getAll(): List<Topic> = topicRepository.findAll()
+
+    fun update(id: Long, status: TopicStatus): Unit =
+        topicRepository.findById(id).ifPresent {
+            it.updateStatus(status)
+        }
 }

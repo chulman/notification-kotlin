@@ -22,4 +22,8 @@ class Topic(
                 "topic=$topic, " +
                 "status=$status)";
     }
+
+    fun updateStatus(status: TopicStatus) {
+        this.status = status
+    }
 }

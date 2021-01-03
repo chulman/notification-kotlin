@@ -1,12 +1,12 @@
 package com.study.notification.api.controller
 
+import com.study.notification.api.domain.model.Topic
+import com.study.notification.api.dto.TopicStatus
 import com.study.notification.api.service.TopicService
 import org.springframework.web.bind.annotation.*
 
 /**
  * @author ray
- *
- * TODO
  */
 @RestController
 @RequestMapping("/api/v1/topic")
@@ -14,21 +14,14 @@ class TopicController(
     private val topicService: TopicService
 ) {
 
-    // TODO
     @GetMapping("/list")
-    fun getAll() {
+    fun getAll():List<Topic> = topicService.getAll()
 
-    }
-
-    // TODO update state for active or inactive
     @PutMapping("/active/{id}")
-    fun active(@PathVariable id: Long) {
+    fun active(@PathVariable id: Long)
+            = topicService.update(id, TopicStatus.ACTIVE)
 
-    }
-
-    // TODO update state for active or inactive
     @PutMapping("/inactive/{id}")
-    fun inActive(@PathVariable id: Long) {
-
-    }
+    fun inActive(@PathVariable id: Long)
+            = topicService.update(id, TopicStatus.INACTIVE)
 }

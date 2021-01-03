@@ -1,0 +1,11 @@
+### getAll test
+GET http://localhost:8080/api/v1/topic/lists
+Content-Type: application/json
+
+### active test
+PUT http://localhost:8080/api/v1/topic/active/1
+Content-Type: application/json
+
+### inactive test
+PUT http://localhost:8080/api/v1/topic/inactive/1
+Content-Type: application/json
