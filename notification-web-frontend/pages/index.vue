@@ -16,7 +16,7 @@
         <input id="message" v-model="message" type="text"
                placeholder="input test message...">
         <div class="inline-button-container">
-          <button>Send</button>
+          <button @click="send('message')">Send</button>
           <button @click="clearInput($event, 'message')">Clear</button>
         </div>
       </div>
@@ -24,6 +24,8 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex';
+
 export default {
   data() {
     return {
@@ -34,6 +36,24 @@ export default {
   mounted() {
   },
   methods: {
+    ...mapActions('notification', {
+      sendNotification: 'sendNotification'
+    }),
+    send(model) {
+      const payload = {
+        url: '/api/v1/notification/send',
+        data: {
+          message: this[model],
+          topic: 'news' //TODO replace input
+        }
+      }
+      try {
+        this.sendNotification(payload)
+      } catch (e) {
+        this.alert(e);
+      }
+
+    },
     clearInput(event, model) {
       event.preventDefault();
       this[model] = '';
