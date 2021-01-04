@@ -1,5 +1,5 @@
 <template>
-<!--  https://vuejsexamples.com/a-vue-component-of-dynamic-table/-->
+  <!--  https://vuejsexamples.com/a-vue-component-of-dynamic-table/-->
   <div class="topic-container">
     <vue-table-dynamic
       :params="params"
@@ -12,18 +12,28 @@
 
 <script>
 import VueTableDynamic from 'vue-table-dynamic';
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   components: {
     VueTableDynamic
   },
+  mounted() {
+    this.getAll('/api/v1/topic/list')
+      .then(response => {
+        response.forEach(data => {
+          const row = [data.id, data.topic, data.status, data.createdAt, data.updatedAt];
+          this.params.data.push(row);
+        })
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  },
   data() {
     return {
       params: {
-        data: [
-          ['id', 'topic', 'status', 'createdAt'],
-          [1, 'news', 'Y', '2020-11-20T01:55:00']
-        ],
+        data: [['id', 'topic', 'status', 'createdAt', 'updatedAt']],
         header: 'row',
         showCheck: true,
         border: true,
@@ -36,12 +46,25 @@ export default {
     }
   },
   methods: {
-    onSelect (isChecked, index, data) {
-      console.log('onSelect: ', isChecked, index, data)
-      console.log('Checked Data:', this.$refs.table.getCheckedRowDatas(true))
+    ...mapActions('topic', {
+      getAll: 'getAll'
+    }),
+    ...mapMutations('topic', {
+      setSelectedTopic: 'setSelectedTopic'
+    }),
+    onSelect(isChecked, index, data) {
+      const checkedRowDatas = this.$refs.table.getCheckedRowDatas(true);
+      // console.log('onSelect: ', isChecked, index, data, checkedRowDatas)
     },
-    onSelectionChange (checkedData, checkedIndices, checkedNum) {
-      console.log('onSelectionChange: ', checkedData, checkedIndices, checkedNum)
+    onSelectionChange(checkedData, checkedIndices, checkedNum) {
+      // console.log('onSelectionChange: ', checkedIndices, checkedNum)
+      if (checkedData.length > 1) {
+        const selectedArray = checkedData.filter((data, index) => index !== 0)
+          .map(data => data[1])
+        this.setSelectedTopic(selectedArray);
+      } else {
+        this.setSelectedTopic([]);
+      }
     }
   }
 }

@@ -6,7 +6,6 @@
     </p>
     <h2>TOPIC</h2>
     <div class="section">
-      <!-- TODO table   -->
       <h4> search for topic </h4>
       <Topic/>
     </div>
@@ -24,7 +23,7 @@
   </div>
 </template>
 <script>
-import {mapActions} from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -32,27 +31,31 @@ export default {
       message: ''
     };
   },
-  computed: {},
-  mounted() {
+  computed: {
+    ...mapGetters('topic', {
+      selectedTopic:'findFirstSelectedTopic'
+    }),
   },
+  mounted() {},
   methods: {
     ...mapActions('notification', {
       sendNotification: 'sendNotification'
     }),
     send(model) {
+      const topic = this.selectedTopic;
+      if (topic === '') {
+        alert('topic 을 선택해주세요.');
+        return;
+      }
+
       const payload = {
         url: '/api/v1/notification/send',
         data: {
-          message: this[model],
-          topic: 'news' //TODO replace input
+          topic,
+          message: this[model]
         }
       }
-      try {
-        this.sendNotification(payload)
-      } catch (e) {
-        this.alert(e);
-      }
-
+      this.sendNotification(payload)
     },
     clearInput(event, model) {
       event.preventDefault();
