@@ -16,4 +16,4 @@
 ### TODO
 - [X] push 된 알림을 db에 저장
 - [X] topic update 
-- [ ] notification web project complete
+- [X] notification web project complete
