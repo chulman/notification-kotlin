@@ -11,9 +11,9 @@
 ##
 ####################################################################
 ### step 1. build frontend & bake image
-#cd notification-web-frontend && yarn generate && yarn docker-build
+cd notification-web-frontend && yarn generate && yarn docker-build
 ### step 2. build backend & bake image
-#cd .. && ./gradlew jibDockerBuild
+cd .. && ./gradlew jibDockerBuild
 ### container run
 docker-compose -f docker-compose-local.yml up -d
 #############################################################################################
