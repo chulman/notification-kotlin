@@ -7,7 +7,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "jest"
+    "test": "jest",
+    "docker-build": "get_or_default() { if [ -z \"$1\" ]; then echo $2; else echo $1; fi } && export DOCKER_IMG_TAG_NAME=$(get_or_default $DOCKER_IMG_NAME $npm_package_name):$(get_or_default $DOCKER_TAG $npm_package_version) && docker image build -t $DOCKER_IMG_TAG_NAME ."
   },
   "dependencies": {
     "@nuxt/http": "^0.6.0",
