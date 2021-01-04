@@ -1,5 +1,9 @@
 # notification project
 
+> start
+- local: ./local-start.sh
+- production: todo
+
 > 프로젝트 구성
 
 | name | classification | description |
