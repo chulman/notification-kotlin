@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+  backend:
+    image: notification-api:1.0-SNAPSHOT
+    container_name: notification-backend
+    environment:
+      - JVM_MEMORY=-Xmx2g -Xms2g -XX:MetaspaceSize=200m
+    ports:
+      - 8080:8080
+  frontend:
+    image: notification-web-frontend:1.0.0
+    ports:
+      - 3000:3000
+    links:
+      - backend:backend
+    depends_on:
+      - backend
